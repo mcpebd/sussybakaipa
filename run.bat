@@ -5,25 +5,13 @@ set "ipa=%~1"
 set "mcpack=%~2"
 set "subpack=%~3"
 
-curl -LO "%ipa%"
-curl -LO "%mcpack%"
-
-for %%Z in (*.mcpack *.zip) do (
-echo %%Z
-    set mcpack=%%Z
-echo !mcpack!
-)
-
-for %%Z in (*.ipa) do (
-echo %%Z
-    set ipa=%%Z
-echo !ipa!
-)
+curl -L "%ipa%" -o input.ipa
+curl -L "%mcpack%" -o input.mcpack
 
 mkdir MCPACK
 mkdir IPA
-powershell -Command Expand-Archive -Path "%ipa%" -DestinationPath "IPA"
-powershell -Command Expand-Archive -Path "!mcpack!" -DestinationPath "MCPACK"
+powershell -Command Expand-Archive -Path "input.ipa" -DestinationPath "IPA"
+powershell -Command Expand-Archive -Path "input.mcpack" -DestinationPath "MCPACK"
 
 for /d /r "MCPACK" %%D in (*) do (
     if exist "%%D\manifest.json" (
