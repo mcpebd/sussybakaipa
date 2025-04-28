@@ -38,6 +38,6 @@ if defined subpack (
 )
 
 echo Zipping IPA...
-rem powershell -Command Compress-Archive -Path "%ipa%\*" -DestinationPath "output.ipa"
-7z a output.ipa "%ipa%\*"
+rem powershell -Command Compress-Archive -Path "IPA\*" -DestinationPath "output.ipa"
+7z a output.ipa "IPA\*"
 echo Done zipping IPA...
