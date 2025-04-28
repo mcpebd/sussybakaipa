@@ -26,5 +26,5 @@ jobs:
 
     - name: Run batch file
       run: |
-        call run.bat "${{ github.event.inputs.ipa_link }}" "${{ github.event.inputs.mcpack_link }}" "${{ github.event.inputs.subpack }}"
+        cmd /c run.bat "${{ github.event.inputs.ipa_link }}" "${{ github.event.inputs.mcpack_link }}" "${{ github.event.inputs.subpack }}"
         curl.exe -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendDocument" -F "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" -F "document=@output.ipa"
