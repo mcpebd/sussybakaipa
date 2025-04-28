@@ -8,9 +8,20 @@ set "subpack=%~3"
 curl -LO "%ipa%"
 curl -LO "%mcpack%"
 
-for %%Z in (*.mcpack *.zip) do (set mcpack=%%Z)
+for %%Z in (*.mcpack *.zip) do (
+echo %%Z
+    set mcpack=%%Z
+echo !mcpack!
+)
+
+for %%Z in (*.ipa) do (
+echo %%Z
+    set ipa=%%Z
+echo !ipa!
+)
 
 mkdir MCPACK
+mkdir IPA
 powershell -Command Expand-Archive -Path "%ipa%" -DestinationPath "IPA"
 powershell -Command Expand-Archive -Path "!mcpack!" -DestinationPath "MCPACK"
 
