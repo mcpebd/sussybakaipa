@@ -10,8 +10,14 @@ curl -L "%mcpack%" -o input.mcpack
 
 mkdir MCPACK
 mkdir IPA
+
+echo Exracting IPA...
 powershell -Command Expand-Archive -Path "input.ipa" -DestinationPath "IPA"
+echo Done exracting IPA...
+
+echo Exracting MCPACK...
 powershell -Command Expand-Archive -Path "input.mcpack" -DestinationPath "MCPACK"
+echo Done exracting MCPACK...
 
 for /d /r "MCPACK" %%D in (*) do (
     if exist "%%D\manifest.json" (
@@ -29,4 +35,6 @@ if defined subpack (
     )
 )
 
+echo Zipping IPA...
 powershell -Command Compress-Archive -Path "%ipa%\*" -DestinationPath "output.ipa"
+echo Done zipping IPA...
