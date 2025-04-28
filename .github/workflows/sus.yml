@@ -1,0 +1,29 @@
+name: Do sussy baka stuff
+
+on:
+  workflow_dispatch:
+    inputs:
+      ipa_link:
+        description: 'IPA Link'
+        required: true
+        type: string
+      mcpack_link:
+        description: 'MCPack Link'
+        required: true
+        type: string
+      subpack:
+        description: 'Subpack to use (optional)'
+        required: false
+        type: string
+
+jobs:
+  run-batch:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run batch file
+      run: |
+        call run.bat "${{ github.event.inputs.ipa_link }}" "${{ github.event.inputs.mcpack_link }}" "${{ github.event.inputs.subpack }}"
