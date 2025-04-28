@@ -12,13 +12,13 @@ mkdir MCPACK
 mkdir IPA
 
 echo Exracting IPA...
-powershell -Command Expand-Archive -Path "input.ipa" -DestinationPath "IPA"
-rem 7z x input.ipa -oIPA
+rem powershell -Command Expand-Archive -Path "input.ipa" -DestinationPath "IPA"
+7z x input.ipa -oIPA
 echo Done exracting IPA...
 
 echo Exracting MCPACK...
-powershell -Command Expand-Archive -Path "input.mcpack" -DestinationPath "MCPACK"
-rem 7z x input.mcpack -oMCPACK
+rem powershell -Command Expand-Archive -Path "input.mcpack" -DestinationPath "MCPACK"
+7z x input.mcpack -oMCPACK
 echo Done exracting MCPACK...
 
 for /d /r "MCPACK" %%D in (*) do (
@@ -38,6 +38,6 @@ if defined subpack (
 )
 
 echo Zipping IPA...
-powershell -Command Compress-Archive -Path "IPA\*" -DestinationPath "output.ipa"
-rem 7z a output.ipa "IPA\*"
+rem powershell -Command Compress-Archive -Path "IPA\*" -DestinationPath "output.ipa"
+7z a output.ipa "IPA\*"
 echo Done zipping IPA...
