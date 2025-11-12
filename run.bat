@@ -21,11 +21,21 @@ rem powershell -Command Expand-Archive -Path "input.mcpack" -DestinationPath "MC
 7z x input.mcpack -oMCPACK
 echo Done exracting MCPACK...
 
-for /d /r "MCPACK" %%D in (*) do (
-    if exist "%%D\manifest.json" (
-        set "mcpack=%%D"
+if exist "MCPACK\manifest.json" (
+    set "mcpack=MCPACK"
+) else (
+    for /d /r "MCPACK" %%D in (*) do (
+        if exist "%%D\manifest.json" (
+            set "mcpack=%%D"
+            goto skip_loop
+        )
     )
 )
+:skip_loop
+echo MCPACK folder is: !mcpack!
+pushd !mcpack!
+tree /f /a
+popd
 
 for %%M in (!mcpack!\renderer\materials\*.material.bin) do (
     echo Copying %%~M
