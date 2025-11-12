@@ -38,13 +38,13 @@ tree /f /a
 popd
 
 for %%M in (!mcpack!\renderer\materials\*.material.bin) do (
-    echo Copying %%~M
+    echo copy /d /b "%%~M" "IPA\Payload\minecraftpe.app\data\renderer\materials"
     copy /d /b "%%~M" "!ipa!\Payload\minecraftpe.app\data\renderer\materials"
 )
 
 if defined subpack (
     for %%M in (!mcpack!\subpacks\!subpack!\renderer\materials\*.material.bin) do (
-        echo Copying %%~M
+        echo copy /d /b "%%~M" "IPA\Payload\minecraftpe.app\data\renderer\materials"
         copy /d /b "%%~M" "IPA\Payload\minecraftpe.app\data\renderer\materials"
     )
 )
