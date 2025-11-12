@@ -28,11 +28,13 @@ for /d /r "MCPACK" %%D in (*) do (
 )
 
 for %%M in (!mcpack!\renderer\materials\*.material.bin) do (
+    echo Copying %%~M
     copy /d /b "%%~M" "!ipa!\Payload\minecraftpe.app\data\renderer\materials"
 )
 
 if defined subpack (
     for %%M in (!mcpack!\subpacks\!subpack!\renderer\materials\*.material.bin) do (
+        echo Copying %%~M
         copy /d /b "%%~M" "!ipa!\Payload\minecraftpe.app\data\renderer\materials"
     )
 )
