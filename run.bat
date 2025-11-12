@@ -37,11 +37,11 @@ pushd !mcpack!
 tree /f /a
 popd
 
-tree /a
+rem tree /a
 
 for %%M in (!mcpack!\renderer\materials\*.material.bin) do (
     echo copy /d /b "%%~M" "IPA\Payload\minecraftpe.app\data\renderer\materials"
-    copy /d /b "%%~M" "!ipa!\Payload\minecraftpe.app\data\renderer\materials"
+    copy /d /b "%%~M" "IPA\Payload\minecraftpe.app\data\renderer\materials"
 )
 
 if defined subpack (
