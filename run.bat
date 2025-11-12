@@ -32,6 +32,7 @@ if exist "MCPACK\manifest.json" (
     )
 )
 :skip_loop
+echo IPA folder is: !ipa!
 echo MCPACK folder is: !mcpack!
 pushd !mcpack!
 tree /f /a
@@ -45,7 +46,7 @@ for %%M in (!mcpack!\renderer\materials\*.material.bin) do (
 if defined subpack (
     for %%M in (!mcpack!\subpacks\!subpack!\renderer\materials\*.material.bin) do (
         echo Copying %%~M
-        copy /d /b "%%~M" "!ipa!\Payload\minecraftpe.app\data\renderer\materials"
+        copy /d /b "%%~M" "IPA\Payload\minecraftpe.app\data\renderer\materials"
     )
 )
 
