@@ -32,7 +32,6 @@ if exist "MCPACK\manifest.json" (
     )
 )
 :skip_loop
-echo IPA folder is: !ipa!
 echo MCPACK folder is: !mcpack!
 pushd !mcpack!
 tree /f /a
