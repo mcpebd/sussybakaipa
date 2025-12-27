@@ -51,6 +51,10 @@ if defined subpack (
     )
 )
 
+if defined REMOVE_MUSIC (
+    rmdir /s "IPA\Payload\minecraftpe.app\data\resource_packs\vanilla_music"
+)
+
 rem echo Zipping IPA...
 rem powershell -Command Compress-Archive -Path "IPA\*" -DestinationPath "output.ipa"
 rem 7z a output.ipa "IPA\*"
