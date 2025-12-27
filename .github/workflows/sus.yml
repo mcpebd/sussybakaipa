@@ -15,6 +15,10 @@ on:
         description: 'Subpack to use (optional)'
         required: false
         type: string
+      remove_music:
+        description: 'Remove music?'
+        default: false
+        type: boolean
 
 jobs:
   run-batch:
@@ -24,6 +28,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Set environment variable
+      if: ${{ inputs.remove_music == 'true' }}
+      run: echo "REMOVE_MUSIC=true" >> $GITHUB_ENV
+        
     - name: Run batch file
       run: |
         cmd /c run.bat "${{ github.event.inputs.ipa_link }}" "${{ github.event.inputs.mcpack_link }}" "${{ github.event.inputs.subpack }}"
