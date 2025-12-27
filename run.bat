@@ -4,6 +4,7 @@ setlocal enabledelayedexpansion
 set "ipa=%~1"
 set "mcpack=%~2"
 set "subpack=%~3"
+set "musicRemoval=%~4"
 
 curl -L "%ipa%" -o input.ipa
 curl -L "%mcpack%" -o input.mcpack
@@ -51,7 +52,7 @@ if defined subpack (
     )
 )
 
-if defined REMOVE_MUSIC (
+if "%musicRemoval%" equ "true" (
     rmdir /s "IPA\Payload\minecraftpe.app\data\resource_packs\vanilla_music"
 )
 
