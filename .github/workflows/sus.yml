@@ -27,14 +27,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
-    - name: Set environment variable
-      if: ${{ inputs.remove_music == 'true' }}
-      run: echo "REMOVE_MUSIC=true" >> $GITHUB_ENV
         
     - name: Run batch file
       run: |
-        cmd /c run.bat "${{ github.event.inputs.ipa_link }}" "${{ github.event.inputs.mcpack_link }}" "${{ github.event.inputs.subpack }}"
+        cmd /c run.bat "${{ github.event.inputs.ipa_link }}" "${{ github.event.inputs.mcpack_link }}" "${{ github.event.inputs.subpack }}" "${{ inputs.remove_music }}"
 
     - name: Upload
       uses: actions/upload-artifact@v4
