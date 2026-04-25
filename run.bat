@@ -53,6 +53,7 @@ if defined subpack (
 )
 
 if "%musicRemoval%" equ "true" (
+    echo Removing vanilla_music folder...
     rmdir /s "IPA\Payload\minecraftpe.app\data\resource_packs\vanilla_music"
 )
 
